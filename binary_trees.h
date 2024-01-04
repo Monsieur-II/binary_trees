@@ -2,8 +2,9 @@
 #define BINARY_TREES
 
 /*Libraries*/
+#include <stddef.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <limits.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -21,7 +22,22 @@ struct binary_tree_s
 	struct binary_tree_s *right;
 };
 
+/*Typedefs*/
 typedef struct binary_tree_s binary_tree_t;
+typedef struct binary_tree_s bst_t;
+typedef struct binary_tree_s avl_t;
+typedef struct binary_tree_s heap_t;
+
+/**
+ * struct levelorder_queue_s - Level order traversal queue.
+ * @node: A node of a binary tree.
+ * @next: The next node to traverse to in the binary tree.
+ */
+typedef struct levelorder_queue_s
+{
+	binary_tree_t *node;
+	struct levelorder_queue_s *next;
+} levelorder_queue_t;
 
 /*Function Protoypes*/
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
